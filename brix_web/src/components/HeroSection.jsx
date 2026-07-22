@@ -30,7 +30,8 @@ const HeroSection = () => {
         <div className="flex flex-nowrap justify-start gap-2 whitespace-nowrap rounded-full border border-white/20 bg-white/10 px-3 py-2 text-[11px] uppercase tracking-wide sm:justify-center sm:gap-4 sm:px-4 sm:text-sm">
           <NavLink to="/" end className={navLinkClassName}>Home</NavLink>
           <NavLink to="/services" className={navLinkClassName}>Services</NavLink>
-          <a href="#" className="hidden rounded-full px-3 py-2 transition-colors hover:bg-white/20 sm:inline-flex sm:px-4">About</a>
+          <a href="/about" className={navLinkClassName} className="hidden rounded-full px-3 py-2 transition-colors hover:bg-white/20 sm:inline-flex sm:px-4">About</a>
+          <NavLink to="/pricing" className={navLinkClassName}>Pricing</NavLink>
           <a href="#" className="rounded-full px-3 py-2 transition-colors hover:bg-white/20 sm:px-4">Portfolio</a>
           <a href="#" className="hidden rounded-full px-3 py-2 transition-colors hover:bg-white/20 sm:inline-flex sm:px-4">Reviews</a>
           <a href="#" className="rounded-full px-3 py-2 transition-colors hover:bg-white/20 sm:px-4">Contact</a>

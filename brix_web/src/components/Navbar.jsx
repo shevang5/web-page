@@ -7,16 +7,17 @@ const Navbar = () => {
   const navItems = [
     { label: 'Home', path: '/', isRouter: true },
     { label: 'Services', path: '/services', isRouter: true },
-    { label: 'About', path: '#about', isRouter: false, hideOnMobile: true },
-    { label: 'Portfolio', path: '#portfolio', isRouter: false },
-    { label: 'Reviews', path: '#reviews', isRouter: false, hideOnMobile: true },
-    { label: 'Contact', path: '#contact', isRouter: false },
+    { label: 'About', path: '/about', isRouter: false, hideOnMobile: true },
+    { label: 'Portfolio', path: '/portfolio', isRouter: false },
+    { label: 'Pricing', path: '/pricing', isRouter: false },
+    { label: 'Reviews', path: '/reviews', isRouter: false, hideOnMobile: true },
+    { label: 'Contact', path: '/contact', isRouter: false },
   ];
 
   // Helper function to figure out which tab is currently active
   const getActiveIndex = () => {
     const foundIndex = navItems.findIndex((item) => {
-      if (item.isRouter) {
+      if (item.isRouter) {  
         return location.pathname === item.path;
       }
       return location.hash === item.path;

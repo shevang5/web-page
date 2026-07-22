@@ -65,7 +65,7 @@ const Contact = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
         
         {/* Left Column: Contact Info Card */}
-        <div className="lg:col-span-5 bg-[#1a1a1a] text-white rounded-[2.5rem] p-8 md:p-12 flex flex-col justify-between min-h-[550px] relative overflow-hidden">
+        <div className="lg:col-span-5 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-600 text-white rounded-[2.5rem] p-8 md:p-12 flex flex-col justify-between min-h-[550px] relative overflow-hidden">
           
           <div className="relative z-10">
             <span className="inline-block border border-white/30 rounded-full px-4 py-1.5 text-xs uppercase tracking-wider mb-8">
