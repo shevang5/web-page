@@ -28,7 +28,7 @@ const AboutPage = () => {
         {/* ------------------- HEADER SECTION ------------------- */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-6xl font-normal text-[#12151c] tracking-tight leading-[1.1]">
+            <h1 className="text-4xl md:text-6xl font-normal text-[#e2dcc2] tracking-tight leading-[1.1]">
               Our Story, Vision, <br />
               <span className="font-semibold">and Values</span>
             </h1>
@@ -41,23 +41,8 @@ const AboutPage = () => {
         </div>
 
         {/* ------------------- HERO ABSTRACT BANNER WITH NOTCH & ICON ------------------- */}
-        <div className="relative w-full rounded-[2.5rem] bg-gradient-to-r from-gray-200 via-gray-100 to-gray-300 overflow-hidden shadow-sm mb-16 h-[260px] md:h-[340px]">
-          {/* Abstract 3D Architectural Render Visual */}
-          <div className="absolute inset-0 opacity-90 mix-blend-multiply">
-            <svg className="w-full h-full" viewBox="0 0 1200 400" fill="none" preserveAspectRatio="xMidYMid slice">
-              <path d="M0 400C300 400 450 100 700 100C950 100 1050 300 1200 200V0H0V400Z" fill="url(#grad1)" />
-              <circle cx="850" cy="200" r="180" stroke="#ffffff" strokeWidth="30" strokeOpacity="0.6" />
-              <circle cx="850" cy="200" r="120" stroke="#ffffff" strokeWidth="20" strokeOpacity="0.8" />
-              <circle cx="850" cy="200" r="60" stroke="#ffffff" strokeWidth="10" />
-              <defs>
-                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#e2e8f0" />
-                  <stop offset="50%" stopColor="#cbd5e1" />
-                  <stop offset="100%" stopColor="#94a3b8" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+        <div className="relative w-full rounded-[2.5rem] bg-[url('https://images.unsplash.com/photo-1698429894931-fa699270a2fa?q=80&w=1700&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat bg-[#f8f8f8] overflow-hidden shadow-sm mb-16 h-[260px] md:h-[340px]">
+          
 
           {/* Floating Emerald Action Badge */}
           <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 w-12 h-12 md:w-14 md:h-14 bg-[#00c88c] hover:bg-[#00b07a] transition-transform hover:scale-105 rounded-full flex items-center justify-center text-white shadow-lg cursor-pointer">
@@ -82,10 +67,8 @@ const AboutPage = () => {
             </div>
 
             {/* Sub-banner Abstract Mini Bar */}
-            <div className="mt-8 h-24 w-full rounded-2xl bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 overflow-hidden relative opacity-80">
-              <svg className="w-full h-full" viewBox="0 0 600 100" fill="none" preserveAspectRatio="xMidYMid slice">
-                <path d="M0 50 Q 150 0, 300 50 T 600 50" stroke="#ffffff" strokeWidth="24" fill="none" />
-              </svg>
+            <div className="mt-8 h-24 w-full rounded-2xl bg-[url('https://images.unsplash.com/photo-1775217946019-0687fd8c598a?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] overflow-hidden relative opacity-80 bg-cover object-center">
+              
             </div>
           </div>
 
