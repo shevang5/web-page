@@ -1,0 +1,105 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+
+const Navbar = () => {
+  const location = useLocation();
+
+  const navItems = [
+    { label: 'Home', path: '/', isRouter: true },
+    { label: 'Services', path: '/services', isRouter: true },
+    { label: 'About', path: '#about', isRouter: false, hideOnMobile: true },
+    { label: 'Portfolio', path: '#portfolio', isRouter: false },
+    { label: 'Reviews', path: '#reviews', isRouter: false, hideOnMobile: true },
+    { label: 'Contact', path: '#contact', isRouter: false },
+  ];
+
+  // Helper function to figure out which tab is currently active
+  const getActiveIndex = () => {
+    const foundIndex = navItems.findIndex((item) => {
+      if (item.isRouter) {
+        return location.pathname === item.path;
+      }
+      return location.hash === item.path;
+    });
+    return foundIndex !== -1 ? foundIndex : 0;
+  };
+
+  const [activeIndex, setActiveIndex] = useState(getActiveIndex);
+  const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 });
+  const tabRefs = useRef([]);
+
+  // Sync active index whenever route/hash changes
+  useEffect(() => {
+    setActiveIndex(getActiveIndex());
+  }, [location]);
+
+  // Recalculate sliding pill coordinates whenever active tab or screen size changes
+  useEffect(() => {
+    const updatePillPosition = () => {
+      const currentTab = tabRefs.current[activeIndex];
+      if (currentTab) {
+        setPillStyle({
+          left: currentTab.offsetLeft,
+          width: currentTab.offsetWidth,
+        });
+      }
+    };
+
+    updatePillPosition();
+    window.addEventListener('resize', updatePillPosition);
+    return () => window.removeEventListener('resize', updatePillPosition);
+  }, [activeIndex]);
+
+  return (
+    <nav className="mb-5 flex absolute top-5 left-1/2 transform -translate-x-1/2 z-50 justify-center md:mb-8">
+      <div className="relative flex flex-nowrap items-center gap-1 rounded-full border border-white/20 bg-white/10 p-1.5 text-xs uppercase tracking-wide backdrop-blur-md sm:gap-2 sm:text-sm">
+        
+        {/* Animated Sliding Blur White Pill */}
+        <div
+          className="absolute top-1.5 bottom-1.5 rounded-full bg-white/20 border border-white/30 backdrop-blur-md shadow-md pointer-events-none transition-all duration-400 ease-[cubic-bezier(0.65,0,0.35,1)]"
+          style={{
+            left: `${pillStyle.left}px`,
+            width: `${pillStyle.width}px`,
+          }}
+        />
+
+        {/* Navigation Tabs */}
+        {navItems.map((item, index) => {
+          const isActive = activeIndex === index;
+          const baseStyles = `relative z-10 rounded-full px-3 py-2 transition-colors duration-400 ease-[cubic-bezier(0.65,0,0.35,1)] sm:px-4 select-none ${
+            item.hideOnMobile ? 'hidden sm:inline-flex' : 'inline-flex'
+          } ${isActive ? 'text-white font-bold' : 'text-white/70 hover:text-white'}`;
+
+          if (item.isRouter) {
+            return (
+              <NavLink
+                key={item.label}
+                to={item.path}
+                end={item.path === '/'}
+                ref={(el) => (tabRefs.current[index] = el)}
+                onClick={() => setActiveIndex(index)}
+                className={baseStyles}
+              >
+                {item.label}
+              </NavLink>
+            );
+          }
+
+          return (
+            <a
+              key={item.label}
+              href={item.path}
+              ref={(el) => (tabRefs.current[index] = el)}
+              onClick={() => setActiveIndex(index)}
+              className={baseStyles}
+            >
+              {item.label}
+            </a>
+          );
+        })}
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
