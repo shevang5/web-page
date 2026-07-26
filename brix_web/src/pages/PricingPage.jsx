@@ -15,6 +15,10 @@ import {
   Layout 
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import PricingSection from '../components/PricingSection';
+import CTA from '../components/CTA';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 
 const Pricing = () => {
   // Plan Cards Data
@@ -115,7 +119,7 @@ const Pricing = () => {
   ];
 
   return (
-    <div className="min-h-screen  bg-gradient-to-b from-[#2748d9] via-[#eaf1ff] to-[#ffffff] text-slate-800 font-sans selection:bg-blue-500 selection:text-white pb-24 relative overflow-hidden">
+    <div className="min-h-screen   text-slate-800 font-sans selection:bg-blue-500 selection:text-white  relative overflow-hidden">
       <Navbar />
       {/* Import Light Font Stack */}
       <style>{`
@@ -128,94 +132,10 @@ const Pricing = () => {
       <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-cyan-200/30 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute top-[15%] right-[-10%] w-[500px] h-[500px] bg-indigo-200/30 rounded-full blur-3xl pointer-events-none -z-10" />
 
-      {/* --- HERO SECTION --- */}
-      <section className="max-w-4xl mx-auto px-6 pt-32 pb-12 text-center relative z-10">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 text-white text-xs font-medium border border-blue-200/60 shadow-sm mb-6">
-          <Sparkles className="w-3.5 h-3.5 text-white" />
-          <span>Transparent Pricing</span>
-        </div>
-
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-slate-900 tracking-tight leading-[1.15] mb-6">
-          Agency Quality.<br className="hidden sm:inline" /> 
-          <span className="font-normal text-white px-2 py-0.5 rounded-lg  inline-block mt-1">
-            Without the Agency Price Tag.
-          </span>
-        </h1>
-
-        <p className="text-base sm:text-lg font-light text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          Most web agencies charge thousands for work that takes days. We cut the overhead and pass the savings directly to you — without cutting corners on quality.
-        </p>
-      </section>
-
-      {/* --- 3 PRICING PLAN CARDS --- */}
-      <section className="max-w-6xl mx-auto px-6 mb-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-          {plans.map((plan, index) => (
-            <div 
-              key={index}
-              className={`rounded-3xl p-8 transition-all duration-300 flex flex-col justify-between relative backdrop-blur-md ${
-                plan.featured 
-                  ? 'bg-white border-2 border-blue-500 shadow-2xl shadow-blue-500/15 md:-translate-y-3 z-10' 
-                  : 'bg-white/80 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-blue-300 hover:-translate-y-1'
-              }`}
-            >
-              {plan.featured && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-[11px] font-medium tracking-wider uppercase shadow-md">
-                  Most Popular
-                </div>
-              )}
-
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-normal text-slate-900">{plan.name}</h3>
-                  <span className={`px-3 py-1 rounded-full text-xs font-light ${plan.featured ? 'bg-blue-50 text-blue-700' : 'bg-slate-100 text-slate-600'}`}>
-                    {plan.badge}
-                  </span>
-                </div>
-                
-                <p className="text-xs text-slate-500 mb-6 font-light">{plan.target}</p>
-
-                <div className="mb-6 pb-6 border-b border-slate-100">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-normal text-slate-900">{plan.price}</span>
-                    {plan.price.startsWith('$') && (
-                      <span className="text-xs text-slate-500 font-light">/ one-time</span>
-                    )}
-                  </div>
-                </div>
-
-                <ul className="space-y-3.5 text-sm text-slate-600 mb-8 font-light">
-                  {plan.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-start gap-3">
-                      <Check className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <button className={`w-full py-3.5 px-4 rounded-2xl font-normal text-sm transition-all text-center block ${plan.buttonStyle}`}>
-                {plan.buttonText}
-              </button>
-            </div>
-          ))}
-        </div>
-
-        {/* Call-to-Action Box below Plans */}
-        <div className="mt-12 text-center bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-slate-200/80 max-w-3xl mx-auto shadow-sm">
-          <p className="text-slate-600 font-light mb-4 text-sm sm:text-base">
-            Not sure which plan? Book a free call and we'll tell you exactly what you need — honestly.
-          </p>
-          <button className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-normal text-sm sm:text-base transition-all shadow-lg shadow-blue-500/20 hover:scale-105 active:scale-95">
-            <Calendar className="w-4 h-4" />
-            <span>Book a Free Zoom Call</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
-      </section>
+      <PricingSection />
 
       {/* --- PRICING COMPARISON TABLE SECTION --- */}
-      <section className="max-w-5xl mx-auto px-6 mb-24">
+      <section className="max-w-5xl mx-auto px-6 mb-36">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 text-blue-700 text-xs font-medium border border-blue-200/60 mb-3">
             <Scale className="w-3.5 h-3.5 text-blue-600" />
@@ -365,7 +285,9 @@ const Pricing = () => {
           </div>
         </div>
       </section>
-
+          {/* <CTA/> */}
+          <Contact/>
+          <Footer/>
     </div>
   );
 };

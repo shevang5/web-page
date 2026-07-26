@@ -7,7 +7,8 @@ import FAQ from '../components/FAQ'
 import CTA from '../components/CTA'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
-import Pricing from '../components/Pricing'
+import PricingSection from '../components/PricingSection'
+
 
 const home = () => {
   return (
@@ -15,7 +16,7 @@ const home = () => {
       <HeroSection  />
       <Problem />
       <Services />
-      <Pricing />
+      <PricingSection />
       <HowItWorks />
       <FAQ  />
       <CTA />

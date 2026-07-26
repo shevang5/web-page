@@ -495,7 +495,7 @@ const designServices = [
   { name: "Poster Design", price: "from $50", agency: "Agencies: $300+", note: "Print PDF + web PNG · 2–3 days" },
 ];
 
-export default function Pricing() {
+export default function PricingSection() {
   const [hovered, setHovered] = useState(null);
 
   return (
@@ -505,7 +505,7 @@ export default function Pricing() {
 
         {/* Header */}
         <div className="pricing-eyebrow">Transparent Pricing</div>
-        <h2 className="pricing-headline">
+        <h2 className="pricing-headline ">
           Agency Quality.<br />
           <span>Without the Price Tag.</span>
         </h2>
@@ -570,28 +570,6 @@ export default function Pricing() {
             <button className="card-cta cta-featured">Book a Free Zoom Call →</button>
           </div>
 
-          {/* CUSTOM */}
-          <div className="p-card">
-            <div className="agency-price-row">
-              <span className="agency-label">Agencies charge</span>
-              <span className="agency-old-price">$10,000+</span>
-            </div>
-            <div className="card-price" style={{ fontSize: "40px", letterSpacing: "-1px", paddingTop: "7px" }}>Let's Talk</div>
-            <div className="card-price-note">custom quote · no surprises</div>
-            <div className="card-divider"></div>
-            <div className="card-name">Custom</div>
-            <div className="card-tagline">For businesses with specific or advanced needs</div>
-            <div className="card-features">
-              {customFeatures.map((f, i) => (
-                <div key={i} className="card-feature">
-                  <CheckIcon />
-                  <span>{f.text}</span>
-                </div>
-              ))}
-            </div>
-            <button className="card-cta cta-default">Book a Free Zoom Call →</button>
-          </div>
-
           {/* GRAPHIC DESIGN */}
           <div className="p-card design-card">
             <div className="agency-price-row">
@@ -622,6 +600,30 @@ export default function Pricing() {
             </div>
             <button className="card-cta cta-design">Get a Free Quote →</button>
           </div>
+
+          {/* CUSTOM */}
+          <div className="p-card">
+            <div className="agency-price-row">
+              <span className="agency-label">Agencies charge</span>
+              <span className="agency-old-price">$10,000+</span>
+            </div>
+            <div className="card-price" style={{ fontSize: "40px", letterSpacing: "-1px", paddingTop: "7px" }}>Let's Talk</div>
+            <div className="card-price-note">custom quote · no surprises</div>
+            <div className="card-divider"></div>
+            <div className="card-name">Custom</div>
+            <div className="card-tagline">For businesses with specific or advanced needs</div>
+            <div className="card-features">
+              {customFeatures.map((f, i) => (
+                <div key={i} className="card-feature">
+                  <CheckIcon />
+                  <span>{f.text}</span>
+                </div>
+              ))}
+            </div>
+            <button className="card-cta cta-default">Book a Free Zoom Call →</button>
+          </div>
+
+          
 
         </div>
 
