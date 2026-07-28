@@ -24,6 +24,54 @@ import {
 } from "three";
 import { geoEquirectangular, geoPath } from "d3-geo";
 
+const WORLD_DATA_URL =
+    "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/50m/physical/ne_50m_land.json";
+const WORLD_DATA_CACHE_KEY = "aftermax-globe-land-data-v1";
+
+let cachedLandData = null;
+let cachedLandDataPromise = null;
+
+async function getLandData(signal) {
+    if (cachedLandData) return cachedLandData;
+
+    try {
+        const stored = window.localStorage.getItem(WORLD_DATA_CACHE_KEY);
+        if (stored) {
+            cachedLandData = JSON.parse(stored);
+            return cachedLandData;
+        }
+    } catch {
+        // Ignore storage read/parse issues and fall back to network.
+    }
+
+    if (!cachedLandDataPromise) {
+        cachedLandDataPromise = fetch(WORLD_DATA_URL, { signal })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to load land data");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                cachedLandData = data;
+                try {
+                    window.localStorage.setItem(
+                        WORLD_DATA_CACHE_KEY,
+                        JSON.stringify(data)
+                    );
+                } catch {
+                    // Ignore storage quota/privacy failures.
+                }
+                return data;
+            })
+            .finally(() => {
+                cachedLandDataPromise = null;
+            });
+    }
+
+    return cachedLandDataPromise;
+}
+
 function parseColorToRgba(input) {
     if (!input || input.trim() === "") return { r: 0, g: 0, b: 0, a: 0 };
     const str = input.trim();
@@ -167,7 +215,7 @@ export default function Globe({
     style,
 }) {
     const containerRef = useRef(null);
-    const [, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const dotColor = dots.color;
@@ -190,6 +238,7 @@ export default function Globe({
     useEffect(() => {
         if (!containerRef.current) return;
         const container = containerRef.current;
+        const abortController = new AbortController();
         const containerWidth =
             container.clientWidth || container.offsetWidth || 800;
         const containerHeight =
@@ -210,7 +259,7 @@ export default function Globe({
 
         const renderer = new WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(containerWidth, containerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
         renderer.outputColorSpace = "srgb";
         const canvas = renderer.domElement;
         canvas.style.position = "absolute";
@@ -218,6 +267,8 @@ export default function Globe({
         canvas.style.width = "100%";
         canvas.style.height = "100%";
         canvas.style.display = "block";
+        canvas.style.opacity = "0";
+        canvas.style.transition = "opacity 220ms ease";
         container.appendChild(canvas);
 
         const resolvedOceanColor = oceanColor;
@@ -234,7 +285,7 @@ export default function Globe({
         const fillRgba = parseColorToRgba(resolvedFillColor);
         void markerRgba;
 
-        const oceanGeometry = new SphereGeometry(globeRadius, 64, 64);
+        const oceanGeometry = new SphereGeometry(globeRadius, 40, 40);
         const oceanColorObj = resolvedOceanColor
             ? new Color(resolvedOceanColor)
             : new Color(0, 0, 0);
@@ -304,7 +355,7 @@ export default function Globe({
             const gridSpacing = 15;
             for (let lat = -90; lat <= 90; lat += gridSpacing) {
                 const positions = [];
-                const segments = 64;
+                const segments = 32;
                 for (let i = 0; i <= segments; i++) {
                     const lng = (i / segments) * 360 - 180;
                     const pos = latLngToPosition(lat, lng);
@@ -346,7 +397,7 @@ export default function Globe({
             }
             for (let lng = -180; lng < 180; lng += gridSpacing) {
                 const positions = [];
-                const segments = 64;
+                const segments = 32;
                 for (let i = 0; i <= segments; i++) {
                     const lat = (i / segments) * 180 - 90;
                     const pos = latLngToPosition(lat, lng);
@@ -394,11 +445,8 @@ export default function Globe({
         const loadWorldData = async () => {
             try {
                 setIsLoading(true);
-                const response = await fetch(
-                    "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/50m/physical/ne_50m_land.json"
-                );
-                if (!response.ok) throw new Error("Failed to load land data");
-                const landFeatures = await response.json();
+                const landFeatures = await getLandData(abortController.signal);
+                if (abortController.signal.aborted) return;
 
                 while (continentOutlineGroup.children.length > 0) {
                     continentOutlineGroup.remove(
@@ -513,8 +561,8 @@ export default function Globe({
                     );
                 }
 
-                const bitmapWidth = 2048;
-                const bitmapHeight = 1024;
+                const bitmapWidth = 1024;
+                const bitmapHeight = 512;
                 const offscreenCanvas = document.createElement("canvas");
                 offscreenCanvas.width = bitmapWidth;
                 offscreenCanvas.height = bitmapHeight;
@@ -555,8 +603,8 @@ export default function Globe({
                 };
 
                 if (fill === "solid") {
-                    const texW = 1024;
-                    const texH = 512;
+                    const texW = 512;
+                    const texH = 256;
                     const fillCanvas = document.createElement("canvas");
                     fillCanvas.width = texW;
                     fillCanvas.height = texH;
@@ -622,8 +670,8 @@ export default function Globe({
                     if (dotCoordinates.length > 0) {
                         const dotGeometry = new SphereGeometry(
                             0.01 * dotSizeMultiplier,
-                            4,
-                            4
+                            3,
+                            3
                         );
                         const dotColorObj = resolvedDotColor
                             ? new Color(resolvedDotColor)
@@ -658,8 +706,10 @@ export default function Globe({
 
                 updateMarkers();
                 renderer.render(scene, camera);
+                canvas.style.opacity = "1";
                 setIsLoading(false);
             } catch (err) {
+                if (abortController.signal.aborted) return;
                 setError("Failed to load land map data");
                 setIsLoading(false);
             }
@@ -864,6 +914,7 @@ export default function Globe({
         loadWorldData();
 
         return () => {
+            abortController.abort();
             if (animationFrameId !== null)
                 cancelAnimationFrame(animationFrameId);
             canvas.removeEventListener("mousedown", handleMouseDown);

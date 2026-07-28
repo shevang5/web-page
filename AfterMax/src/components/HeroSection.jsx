@@ -73,6 +73,10 @@ const HeroSection = () => {
               fillColor="rgba(255,255,255,0.25)"
               outlineColor="rgba(255,255,255,0.35)"
               graticuleColor="rgba(255,255,255,0.16)"
+              speed={1}
+              detail={3}
+              showGrid={false}
+              dots={{ color: "rgba(255,255,255,0.9)", size: 4, density: 6, allDots: false }}
               scale={8}
               style={{ opacity: 0.85 }}
             />
