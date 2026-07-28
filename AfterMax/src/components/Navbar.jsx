@@ -10,9 +10,9 @@ const Navbar = () => {
     { label: 'Home', path: '/', isRouter: true },
     { label: 'Services', path: '/services', isRouter: true },
     { label: 'About', path: '/about', isRouter: true, hideOnMobile: true },
-    { label: 'Portfolio', path: '/portfolio', isRouter: true },
+    { label: 'Portfolio', path: '/portfolio', isRouter: true,hideOnMobile: true },
     { label: 'Pricing', path: '/pricing', isRouter: true },
-    { label: 'Reviews', path: '/reviews', isRouter: true, hideOnMobile: true },
+    // { label: 'Reviews', path: '/reviews', isRouter: true, hideOnMobile: true },
     { label: 'Contact', path: '/contact', isRouter: true },
   ];
 

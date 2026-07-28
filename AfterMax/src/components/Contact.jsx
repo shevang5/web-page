@@ -38,7 +38,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const whatsappNumber = '919099086997';
+    const whatsappNumber = '18322432234';
     const message = [
       'New website inquiry',
       `Name: ${formData.name}`,
@@ -117,12 +117,12 @@ const Contact = () => {
               <div>
                 <p className="text-xs text-gray-400 uppercase tracking-wider font-bold">WhatsApp</p>
                 <a 
-                  href="https://wa.me/919099086997" 
+                  href="https://wa.me/18322432234" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="font-bold text-white hover:text-blue-400 transition-colors"
                 >
-                  +91 9099086997
+                  +1 (832) 243-2234
                 </a>
               </div>
             </div>

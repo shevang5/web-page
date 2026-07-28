@@ -18,7 +18,7 @@ const quickLinks = [
 const socialLinks = [
   {
     label: 'WhatsApp',
-    href: 'https://wa.me/919099086997',
+    href: 'https://wa.me/18322432234',
     icon: faWhatsapp,
   },
   {

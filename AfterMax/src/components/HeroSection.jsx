@@ -31,9 +31,9 @@ const HeroSection = () => {
           <NavLink to="/" end className={navLinkClassName}>Home</NavLink>
           <NavLink to="/services" className={navLinkClassName}>Services</NavLink>
           <a href="/about" className={navLinkClassName} className="hidden rounded-full px-3 py-2 transition-colors hover:bg-white/20 sm:inline-flex sm:px-4">About</a>
-          <NavLink to="/pricing" className={navLinkClassName}>Pricing</NavLink>
-          <a href="#" className="rounded-full px-3 py-2 transition-colors hover:bg-white/20 sm:px-4">Portfolio</a>
-          <a href="#" className="hidden rounded-full px-3 py-2 transition-colors hover:bg-white/20 sm:inline-flex sm:px-4">Reviews</a>
+          <NavLink to="/pricing"  className={navLinkClassName}>Pricing</NavLink>
+          <a href="#" className="hidden rounded-full px-3 py-2 transition-colors hover:bg-white/20 sm:inline-flex sm:px-4">Portfolio</a>
+          {/* <a href="#" className="hidden rounded-full px-3 py-2 transition-colors hover:bg-white/20 sm:inline-flex sm:px-4">Reviews</a> */}
           <a href="#" className="rounded-full px-3 py-2 transition-colors hover:bg-white/20 sm:px-4">Contact</a>
         </div>
       </nav>
@@ -42,7 +42,7 @@ const HeroSection = () => {
       <div className="flex flex-1 flex-col-reverse lg:flex-row items-center justify-between gap-8 w-full max-w-[1400px] mx-auto lg:gap-12">
         
         {/* Left Column: Text & CTA */}
-        <div className="flex-1 pt-96 md:pt-0 max-w-2xl w-full">
+        <div className="flex-1 pt-0 md:pt-0 max-w-2xl w-full">
           <h1 className="font-['Archivo'] italic font-[1000] text-5xl md:text-7xl lg:text-[5rem] leading-[0.95] mb-6 uppercase">
             Your <span className="text-[#FFC900]">Business</span><br />
             Deserves To Be
@@ -66,8 +66,8 @@ const HeroSection = () => {
         </div>
 
         {/* Right Column: 3D Globe Component */}
-        <div className="relative flex w-full flex-1 items-center justify-center min-h-[80px] -mt-8 sm:min-h-[340px] sm:-mt-4 lg:mt-0 lg:h-[650px] pointer-events-auto">
-          <div className="h-full w-full scale-[0.8] sm:scale-[0.9] lg:scale-100">
+        <div className="relative flex w-full items-center justify-center h-[320px] sm:h-[420px] lg:h-[650px]  sm:mt-0">
+          <div className="h-full w-full scale-[0.9] sm:scale-[0.9] lg:scale-100 overflow-visible">
             <Globe
               oceanColor="rgba(255,255,255,0.08)"
               fillColor="rgba(255,255,255,0.25)"
@@ -75,7 +75,7 @@ const HeroSection = () => {
               graticuleColor="rgba(255,255,255,0.16)"
               speed={1}
               detail={3}
-              showGrid={false}
+              showGrid={true}
               dots={{ color: "rgba(255,255,255,0.9)", size: 4, density: 6, allDots: false }}
               scale={8}
               style={{ opacity: 0.85 }}

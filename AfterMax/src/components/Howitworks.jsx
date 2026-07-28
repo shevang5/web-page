@@ -19,7 +19,7 @@ const HowItWorks = () => {
   return (
     <section 
       id="process"
-      className="py-24 px-6 md:px-12 overflow-hidden rounded-[3rem] lg:px-16 bg-[url('./images/hero_bg.png')] bg-cover bg-center bg-no-repeat bg-[#f8f8f8] overflow-hidden"
+      className="py-24 px-6 md:px-12 overflow-hidden rounded-[3rem] lg:px-16 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-600 bg-cover bg-center bg-no-repeat bg-[#f8f8f8] overflow-hidden"
       style={{ fontFamily: 'Arial, sans-serif' }}
     >
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start relative">
