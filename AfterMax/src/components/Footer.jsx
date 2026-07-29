@@ -48,7 +48,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
             <span className="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.24em]">
-              Brix Web
+              AfterMax Design & Development
             </span>
             <h2 className="max-w-xl text-3xl font-bold leading-tight md:text-5xl">
               Building fast websites for businesses all across the US.
@@ -114,7 +114,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-white/15 pt-6 text-xs uppercase tracking-[0.18em] text-blue-100 md:flex-row md:items-center md:justify-between">
-          <p>© 2026 Brix Web. All rights reserved.</p>
+          <p>© 2026 AfterMax Design & Development. All rights reserved.</p>
           <p>Vancouver, WA based. Serving businesses across the United States.</p>
         </div>
       </div>
