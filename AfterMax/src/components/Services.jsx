@@ -38,7 +38,7 @@ const Services = () => {
       <div className="flex flex-col lg:flex-row gap-6">
         
         {/* Left Column: Dark Anchoring Card */}
-        <div className="bg-[url('./images/hero_bg.png')] rounded-3xl p-8 lg:p-12 text-white flex-1 lg:max-w-md xl:max-w-lg flex flex-col justify-between min-h-[400px] relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#2372ff] via-[#0f47bd] to-[#071b4d] rounded-3xl p-8 lg:p-12 text-white flex-1 lg:max-w-md xl:max-w-lg flex flex-col justify-between min-h-[400px] relative overflow-hidden">
           {/* Optional: You can add a background image here like in the reference */}
           <div className="absolute inset-0 opacity-20  bg-cover bg-center mix-blend-overlay pointer-events-none"></div>
           
