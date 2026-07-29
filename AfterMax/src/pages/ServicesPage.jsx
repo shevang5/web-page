@@ -95,7 +95,7 @@ const ServicesPage = () => {
 
             {/* Pricing & CTA */}
             <div className="pt-2">
-              <p className="text-sm md:text-2xl font-bold text-slate-900 mb-4">
+              <p className="text-xl md:text-2xl font-bold text-slate-900 mb-4">
                 Starting at $299 &middot; <span className="text-slate-500 font-normal">Delivered in 7 days</span>
               </p>
               <a 
@@ -181,7 +181,7 @@ const ServicesPage = () => {
 
             {/* Pricing & CTA */}
             <div className="pt-2">
-              <p className="text-sm md:text-2xl font-bold text-slate-900 mb-4">
+              <p className="text-xl md:text-2xl font-bold text-slate-900 mb-4">
                 Starting at $249 &middot; <span className="text-slate-500 font-normal">Delivered in 7 days</span>
               </p>
               <a 
@@ -267,7 +267,7 @@ const ServicesPage = () => {
 
             {/* Pricing & CTA */}
             <div className="pt-2">
-              <p className="text-sm md:text-2xl font-bold text-slate-900 mb-4">
+              <p className="text-xl md:text-2xl font-bold text-slate-900 mb-4">
                 Starting at $199 &middot; <span className="text-slate-500 font-normal">Delivered in 7 days</span>
               </p>
               <a 
@@ -360,7 +360,7 @@ const ServicesPage = () => {
             <div className="bg-white border border-slate-200/80 rounded-2xl p-6 w-full shadow-sm">
               <div className="flex justify-between items-baseline mb-2">
                 <h4 className="text-lg font-bold text-slate-900">🎨 Logo Design</h4>
-                <span className="text-sm md:text-xl font-bold text-red-600">Starting at $80</span>
+                <span className="text-xl md:text-xl font-bold text-red-600">Starting at $80</span>
               </div>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed mb-3">
                 Your logo is the face of your business. We create custom logos that are clean, bold, and memorable — built specifically for your brand, not pulled from a template library.
@@ -414,7 +414,7 @@ const ServicesPage = () => {
                 <h4 className="text-xl font-bold text-slate-900">
                   Banner Design
                 </h4>
-                <span className="text-sm md:text-xl font-bold text-red-600">Starting at $40 / banner</span>
+                <span className="text-xl md:text-xl font-bold text-red-600">Starting at $40 / banner</span>
               </div>
               <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-6">
                 Whether it's a website header, a social media banner, or a print-ready file for a local event — your banner needs to grab attention in under 2 seconds. We design bold, clear banners that communicate instantly.
@@ -442,7 +442,7 @@ const ServicesPage = () => {
                 <h4 className="text-xl font-bold text-slate-900">
                   Poster Design
                 </h4>
-                <span className="text-sm md:text-xl font-bold text-red-600">Starting at $50</span>
+                <span className="text-xl md:text-xl font-bold text-red-600">Starting at $50</span>
               </div>
               <p className="text-slate-600 text-xs md:text-sm leading-relaxed mb-6">
                 Promote your business, announce an event, or run a seasonal offer with a professionally designed poster that actually gets noticed. Clean layout, strong typography, your branding — ready to share anywhere.
