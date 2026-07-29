@@ -12,8 +12,8 @@ const HeroSection = () => {
   return (
     <div 
       id="home"
-      className="min-h-screen flex flex-col px-6 py-8 md:px-12 lg:px-16 overflow-hidden rounded-b-[3rem] text-white bg-cover bg-center bg-fixed font-sans"
-      style={{ backgroundImage: "url('./images/hero_bg.png')" }}
+      className="min-h-screen flex flex-col px-6 py-8 md:px-12 lg:px-16 overflow-hidden  text-white bg-cover bg-center bg-fixed font-sans"
+      style={{ backgroundImage: "url('./images/hero_bg.webp')" }}
     >
       {/* 
         Injecting the Archivo font (Italic, 800 Weight). 
