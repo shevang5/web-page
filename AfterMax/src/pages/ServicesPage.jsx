@@ -25,7 +25,7 @@ const ServicesPage = () => {
       {/* Google Font and SEO tags should be added in index.html or via a head manager like react-helmet */}
 
       {/* ------------------- HERO BANNER ------------------- */}
-      <header className="relative flex min-h-[100vh] w-full md:items-top bg-[url('./images/services_hero.png')] bg-cover bg-bottom font-sans  text-white overflow-hidden px-6 py-0 md:px-12 md:py-10 lg:px-10">
+      <header className="relative flex min-h-[100vh] w-full md:items-top bg-[url('./images/services_hero.png')] bg-gradient-to-b from-[#2748d9] via-[#eaf1ff] to-[#ffffff] bg-cover bg-bottom font-sans  text-white overflow-hidden px-6 py-0 md:px-12 md:py-10 lg:px-10">
         
         {/* Abstract 3D Blue Waves Effect (Recreating visual from services.jpg) */}
         {/* <div className="absolute inset-0 opacity-40 pointer-events-none">
