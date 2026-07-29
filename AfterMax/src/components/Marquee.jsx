@@ -35,13 +35,18 @@ const Marquee = () => {
       const halfWidth = track.scrollWidth / 2;
 
       gsap.set(track, { x: 0 });
+      
 
-      const tween = gsap.to(track, {
-        x: -halfWidth,
-        duration: 24,
-        ease: 'none',
-        repeat: -1
-      });
+      const pixelsPerSecond = 100;
+// const halfWidth = track.scrollWidth / 2;
+const duration = halfWidth / pixelsPerSecond;
+
+const tween = gsap.to(track, {
+  x: -halfWidth,
+  duration,
+  ease: 'none',
+  repeat: -1
+});
 
       const handleResize = () => {
         const nextHalfWidth = track.scrollWidth / 2;
@@ -87,7 +92,7 @@ const Marquee = () => {
       <img
         src={americanFlagSrc}
         alt="American flag"
-        className="h-auto w-24 md:w-20 object-cover"
+        className="h-auto w-14 md:w-20 object-cover"
       />
     ) : (
       <span>{service}</span>

@@ -76,7 +76,7 @@ const HeroSection = () => {
               speed={1}
               detail={3}
               showGrid={true}
-              dots={{ color: "rgba(255,255,255,0.9)", size: 4, density: 20, allDots: false }}
+              dots={{ color: "rgba(255,255,255,0.9)", size: 4, density: 10, allDots: false }}
               scale={8}
               style={{ opacity: 0.85 }}
             />
